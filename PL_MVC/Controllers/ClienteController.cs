@@ -25,7 +25,7 @@ namespace PL_MVC.Controllers
               
 
             if (result.Correct)
-            {
+            { 
                 cliente.Clientes = result.Objects;
             }
             else
