@@ -22,7 +22,7 @@ namespace PL_MVC.Controllers
             cliente.FechaNacimiento = (cliente.FechaNacimiento == null) ? "" : cliente.FechaNacimiento;
 
             ML.Result result = BL.Cliente.GetAll(cliente);
-
+              
 
             if (result.Correct)
             {
