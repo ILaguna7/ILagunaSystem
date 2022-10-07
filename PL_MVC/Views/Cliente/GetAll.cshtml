@@ -1,0 +1,120 @@
+﻿@model ML.Cliente
+@{
+    ViewBag.Title = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Clientes</h2> @*Etiqueta de titlo*@
+
+
+<div class="row">
+    <div class="col-md-12">
+        <h5>Seleccione un Cliente para editarlo o + para agregar...</h5>
+        <hr />
+    </div>
+
+</div>
+
+<div class="container">
+    @using (Html.BeginForm("GetAll", "Cliente", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="row">
+
+            <div class="col-md-4 col-12 col-sm-6">
+                @Html.LabelFor(model => model.Nombre)
+                <div class="input-group">
+                    <span class="input-group-text" id="basic-addon"> <i class="bi bi-person"></i> </span>
+                    @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", @id = "txtNombre", @onkeypress = "return SoloLetras(event, 'lblErrorNombre')" })
+                </div>
+                @Html.ValidationMessageFor(model => model.Nombre)
+                <label id="lblErrorNombre"></label>
+            </div>
+
+            <div class="col-md-4 col-12">
+                @Html.LabelFor(model => model.ApellidoPaterno)
+                <div class="input-group">
+                    <span class="input-group-text" id="basic-addon"> <i class="bi bi-person"></i> </span>
+                    @Html.TextBoxFor(model => model.ApellidoPaterno, new { @class = "form-control", @id = "txtApellidoPaterno", @onkeypress = "return SoloLetras(event, 'lblErrorApellidoPaterno')" })
+                </div>
+                @Html.ValidationMessageFor(model => model.ApellidoPaterno)
+                <label id="lblErrorApellidoPaterno"></label>
+            </div>
+
+            <div class="col-md-4 col-12">
+                @Html.LabelFor(model => model.ApellidoMaterno)
+                <div class="input-group">
+                    <span class="input-group-text" id="basic-addon"> <i class="bi bi-person"></i> </span>
+                    @Html.TextBoxFor(model => model.ApellidoMaterno, new { @class = "form-control", @id = "txtApellidoMaterno", @onkeypress = "return SoloLetras(event, 'lblErrorApellidoMaterno')" })
+                </div>
+                @Html.ValidationMessageFor(model => model.ApellidoMaterno)
+                <label id="lblErrorApellidoMaterno"></label>
+            </div>
+
+            <div class="col-md-4 col-12">
+                @Html.LabelFor(model => model.FechaNacimiento)
+                <div class="input-group">
+                    <span class="input-group-text" id="basic-addon"> <i class="bi bi-person"></i> </span>
+                    @Html.TextBoxFor(model => model.FechaNacimiento, new { @class = "form-control", @id = "txtFechaNacimiento", @onkeypress = "return SoloLetras(event, 'lblErrorFechaNacimiento')" })
+                </div>
+                @Html.ValidationMessageFor(model => model.FechaNacimiento)
+                <label id="lblErrorApellidoPaterno"></label>
+            </div>
+
+
+        </div>
+
+        <br />
+
+        <div class="col">
+            <div class="col-md-3">
+                <input type="submit" value="Buscar" class="btn btn-success" />
+            </div>
+        </div>
+    }
+
+    @*<div class="row">*@
+    <div style="float:right;">
+        @Html.ActionLink("Agregar", "Form", "Cliente", htmlAttributes: new { @class = "btn btn-success" })
+
+    </div>
+
+    <br>
+
+    <table class="table table-bordered table-responsive">
+        @*agregar una tabla*@
+        <thead>
+            <tr>
+                <td>Editar</td>
+                <td class="hidden">IdCliente</td>
+                <td>Nombre</td>
+                <td>FechaNacimiento</td>
+                <td>Telefono</td>
+                <td>Celular</td>
+                <td>Email</td>
+                <td>Direccion</td>
+                <td>Estado</td>
+                <td>Eliminar</td>
+            </tr>
+        </thead>
+        <tbody>
+
+            @foreach (ML.Cliente cliente in Model.Clientes)
+            {
+                <tr>
+                    @*<td><a class="btn btn-warning glyphicon glyphicon-edit" href="@Url.Action("Form", "Cliente", new { IdCliente = cliente.IdCliente })"></a></td>*@
+                    <td class="text-center"><a class="btn btn-warning glyphicon glyphicon-edit" href="@Url.Action("Form", "Cliente", new { IdCliente = cliente.IdCliente })"></a></td>
+                    <td class="hidden">@cliente.IdCliente</td>
+                    <td>@cliente.Nombre @cliente.ApellidoPaterno @cliente.ApellidoMaterno</td>
+                    <td>@cliente.FechaNacimiento</td>
+                    <td>@cliente.Telefono</td>
+                    <td>@cliente.Celular</td>
+                    <td>@cliente.Email</td>
+                    <td>@cliente.Domicilio.IdDomicilio @cliente.Domicilio.Calle @cliente.Domicilio.NumeroExterior @cliente.Domicilio.NumeroInterior @cliente.Domicilio.Colonia.IdColonia @cliente.Domicilio.Colonia.Nombre @cliente.Domicilio.Colonia.CodigoPostal @cliente.Domicilio.Colonia.Municipio.IdMunicipio @cliente.Domicilio.Colonia.Municipio.Nombre @cliente.Domicilio.Colonia.Municipio.Ciudad.IdCiudad @cliente.Domicilio.Colonia.Municipio.Ciudad.Nombre</td>
+                    <td>@cliente.Domicilio.Colonia.Municipio.Ciudad.Estado.IdEstado @cliente.Domicilio.Colonia.Municipio.Ciudad.Estado.Nombre</td>
+
+                    <td><a class="btn btn-danger glyphicon glyphicon-trash" href="@Url.Action("Delete", "Cliente", new { IdCliente = cliente.IdCliente})" onclick="return confirm('Estas seguro que deseas eliminar este registro?');"></a></td>
+                </tr>
+            }
+
+        </tbody>
+    </table>

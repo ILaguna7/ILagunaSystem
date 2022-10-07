@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e67d88b147df4904bb50fad2ed44442d" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="ILagunaNetaSystemModel.Ciudad" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ILagunaNetaSystemModel.Cliente" Width="1.5" PointX="7.625" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ILagunaNetaSystemModel.Colonia" Width="1.5" PointX="7.5" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ILagunaNetaSystemModel.Domicilio" Width="1.5" PointX="9.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ILagunaNetaSystemModel.Estado" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ILagunaNetaSystemModel.Municipio" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <AssociationConnector Association="ILagunaNetaSystemModel.FK__Ciudad__IdEstado__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="ILagunaNetaSystemModel.FK__Municipio__IdCiu__1BFD2C07" ManuallyRouted="false" />
+        <AssociationConnector Association="ILagunaNetaSystemModel.FK__Domicilio__IdCli__1ED998B2" ManuallyRouted="false" />
+        <AssociationConnector Association="ILagunaNetaSystemModel.FK__Colonia__IdMunic__1CF15040" ManuallyRouted="false" />
+        <AssociationConnector Association="ILagunaNetaSystemModel.FK__Domicilio__IdCol__1DE57479" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
